@@ -1,31 +1,24 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { Questions } from "../database/Questions";
-import { UserAUth } from "../context/UserContext";
+import { setLocal, getLocal } from "../helper/helper";
 
-import { setLocal,getLocal,removeLocal } from "../helper/helper";
 const QuizCard = () => {
 
-  const { user } = UserAUth();
+ 
   const [page, setPage] = useState(0);
   const { itemNumber, question, choices } = Questions[page];
   const [answers, setAnswers] = useState(Array(Questions.length));
   const navigate = useNavigate();
 
-  useEffect(()=>{
-    const currentAnswers = getLocal("users_answers") 
-    if(currentAnswers){
-      setAnswers(currentAnswers)
-      console.log(currentAnswers)
-    }
-  },[])
-
   useEffect(() => {
-       if(answers.length > 0){
-         setLocal("users_answers",answers)
-       }
-  });
+    const currentAnswers = getLocal("users_answers");
+    if (currentAnswers) {
+      setAnswers(currentAnswers);
+      console.log(currentAnswers);
+    }
+  }, []);
+
 
 
   const progress = () => {
@@ -44,71 +37,104 @@ const QuizCard = () => {
   };
 
   const handlePrevious = () => {
+   
     if (page > 0) {
       setPage((page) => page - 1);
     }
   };
-  
-  const handleTraces = (choice) => {
+
+  const handleAnswers = (choice) => {
     const newAnswers = answers.splice(itemNumber - 1, 1, choice);
     setAnswers((prev) => [...prev, newAnswers]);
     console.log(choice, answers);
   };
-
+  
+  useEffect(()=>{
+    if(answers[itemNumber] !== null) {
+      console.log(answers[itemNumber])
+    }
+  })
   const submitResponse = () => {
     // navigate to result page
-    navigate("/score");
+    navigate("/score", { replace: true });
   };
   
-
- 
+  const selectedAnswer ={
+    background: "green"
+  }
   return (
-    <div className="quiz-card">
-      <ul>
-        <li>
-          <span>
-            {itemNumber}/{Questions.length}
-          </span>
-        </li>
-        <li>
-          <div className="progress-bar">
-            <div
-              className="progress-bar-line"
-              style={{ width: `${progress()}%` }}
-            ></div>
-          </div>
-        </li>
-        <li>
+    <ul className="quiz-card">
+      <li className="quiz-progress">
+        <span className="quiz-items">
+          {itemNumber}/{Questions.length}
+        </span>
+        <div className="progress-bar">
+          <div
+            className="progress-bar-line"
+            style={{ width: `${progress()}%` }}
+          ></div>
+        </div>
+      </li>
+      <li className="quiz-questions">
+        <div className="questions-wrapper">
           <p>
             <span>{itemNumber}.</span> {question}
           </p>
-        </li>
-        <li>
-          {choices.map((choice, idx) => {
-            return (
-              <div key={idx}>
-                <button onClick={() => handleTraces(numToChar(idx))}>
-                  {numToChar(idx)}.{choice}
-                </button>
-                {/* <label htmlFor={`choices${idx}`} >
-                  <input type="radio" name="choices" id={`choices${idx}`} value={choice}
-                  />
-                </label> */}
-              </div>
-            );
-          })}
-        </li>
-        <li>
-          <button onClick={handlePrevious}>Previous</button>
+        </div>
+      </li>
+      <li className="quiz-choices">
+        {choices.map((choice, idx) => {
+          return (
+            <button
+              key={idx}
+              className="quiz-button"
+              id="btn-choices"
+              style={answers[itemNumber - 1] === numToChar(idx) ? selectedAnswer: null}
+              onClick={() => handleAnswers(numToChar(idx))}
+            >
+              <span className="quiz-button-value">
+                {numToChar(idx)}.{choice}
+              </span>
+            </button>
+          );
+        })}
+      </li>
+      <li className="quiz-navigations">
+        <div className="navigations-wrapper">
+          <button
+            className="quiz-button"
+            id="btn-navigations"
+            onClick={handlePrevious}
+          >
+            <span className="quiz-button-value" id="btn-value">
+              PREV
+            </span>
+          </button>
 
           {itemNumber === Questions.length ? (
-            <button onClick={submitResponse}>Submit</button>
+            <button
+              className="quiz-button"
+              id="btn-submit"
+              onClick={submitResponse}
+            >
+              <span className="quiz-button-value" id="btn-submit-value">
+                SUBMIT
+              </span>
+            </button>
           ) : (
-            <button onClick={handleNext}>Next</button>
+            <button
+              className="quiz-button"
+              id="btn-navigations"
+              onClick={handleNext}
+            >
+              <span className="quiz-button-value" id="btn-value">
+                NEXT
+              </span>
+            </button>
           )}
-        </li>
-      </ul>
-    </div>
+        </div>
+      </li>
+    </ul>
   );
 };
 

@@ -4,17 +4,21 @@
   --primary-color: #fff;
   --secondary-color: #1a1e24;
   --drop-shadow: drop-shadow(0 0 0.1rem var(--gainsboro));
-
+  
   --disabled-button: #A7A7A7;
   --enabled-button: #FFFFFF;
   --error-message: #F70000;
 
+  --white-shade-1: rgba(255, 255, 255, 0.77);
+  
   --blue-shade-1: #1979B9;
   --blue-shade-2: #3498DB;
 
   --orange-shade-1: #E18001;
   --orange-shade-2: #FF930A;
-
+  --orange-shade-3: #FF7B06;
+  
+  --grey-shade-1: #D9D9D9;
   --text-shadow: -0.5px -0.5px 0 #000, 0 -0.5px 0 #000, 0.5px -0.5px 0 #000,
     0.5px 0 0 #000, 0.5px 0.5px 0 #000, 0 0.5px 0 #000, -0.5px 0.5px 0 #000,
     -0.5px 0 0 #000;
@@ -30,7 +34,7 @@
 
 html,
 body {
-  
+
 
   padding: 0;
   margin: 0;
@@ -111,7 +115,7 @@ main {
   grid-area: main;
 
   /* border: 1px blue solid; */
- 
+
   height: calc(100dvh - 60px);
   width: 100%;
   display: flex;
@@ -126,7 +130,7 @@ main {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: .5fr 1fr ;
+  grid-template-rows: .5fr 1fr;
 }
 
 .banner-container {
@@ -170,7 +174,7 @@ main {
 }
 
 .landing-form ul {
- 
+
   align-self: flex-start;
   padding: 0;
   margin: 0;
@@ -181,7 +185,7 @@ main {
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, auto);
   gap: 10px;
-   
+
 }
 
 .landing-form ul li {
@@ -205,7 +209,7 @@ main {
   border-radius: 10px;
   font-size: 12px;
   padding: 0 10px;
-  margin-bottom: 10px ;
+  margin-bottom: 10px;
   border: none;
   outline: none;
   text-transform: uppercase;
@@ -261,57 +265,218 @@ main {
 }
 
 
-.quiz-page-container{
-  width: 100%;
-
-  border: 1px red solid;
-}
-.quiz-card{
+.quiz-page-container {
   width: 100%;
   height: 100%;
-  border: 1px red solid;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.progress-bar{
-  border: 1px var(--secondary-color) solid;
+.quiz-card {
+  width: 100%;
+  height: 100%;
+  max-width: 992px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap:10px;
+
+}
+
+.quiz-card li{
+  width: 90%;
+
+}
+.quiz-progress{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.quiz-questions{
+ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.questions-wrapper{
+  width: 95%;
+  height: 240px;
+  padding: 10px;
+  border-radius: 10px;
+  background: var(--white-shade-1);
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.questions-wrapper p{
+  font-size: 14px;
+  line-height: 120%;
+}
+
+.quiz-choices{
+  padding:20px 0 ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  
+ 
+}
+.quiz-navigations{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+}
+.navigations-wrapper{
+  width: 97%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  gap: 1rem;
+ 
+}
+
+
+
+.quiz-items{
+  margin-left: 10px;
+  color: var(--primary-color);
+}
+.progress-bar {
+  align-self: center;
+  width: 97%;
+  border: 1px var(--blue-shade-1) solid;
   height: 10px;
   border-radius: 5px;
 }
 
-.progress-bar-line{
+.progress-bar-line {
   height: 10px;
   background: var(--blue-shade-2);
   border-radius: 5px;
 }
 
 
+.quiz-button {
+  width: 97%;
+  background: var(--grey-shade-1);
+  border-radius: 12px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+ 
+}
+.quiz-button-value {
+  display: block;
+  padding: 12px 42px;
+  border-radius: 12px;
+  background: var(--primary-color);
+  color: var(--secondary-color);
+  transform: translateY(-6px);
+}
+
+.quiz-button:active .quiz-button-value {
+  transform: translateY(-2px);
+}
+#btn-choices{
+  text-align: left;
+  line-height: 120%;
+}
+#btn-value{
+  color: var(--orange-shade-3);
+  padding: 12px ;
+ 
+}
+
+#btn-navigations:hover  {
+  background: var(--blue-shade-1);
+  }
+#btn-navigations:hover  #btn-value  {
+  background: var(--blue-shade-2);
+}
+  
+.instructions-card {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.instructions-wrapper{
+  width: 90%;
+  max-width: 992px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  padding: 2rem 10px ;
+  background: var(--white-shade-1);
+  border-radius: 10px;
+}
+#instructions-title{
+  color: var(--orange-shade-3);
+}
+.instructions-card ul {
+  width: 100%;
+  height: auto;
+  padding: 10px ;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.instructions-card ul li{
+  font-size: 14px;
+  line-height: 130%;
+}
+
+
+
+
 @media screen and (min-width: 640px) {
   .root-layout-container {
-    grid-template-rows: 60px 1fr ;
+    grid-template-rows: 60px 1fr;
   }
+
   .landing-page-container {
-  
-    grid-template-rows: repeat(2,1fr) ;
+
+    grid-template-rows: repeat(2, 1fr);
   }
+
   .banner-wrapper {
     align-self: flex-end;
   }
-  
+
   .landing-form ul {
-   min-width: 620px;
-   max-width: 800px;
-    
+    min-width: 620px;
+    max-width: 800px;
+
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 120px);
     grid-template-areas:
       "a b"
       "c c";
     column-gap: 35px;
-    
+
   }
-  .landing-form ul li {
-  /* border: 1px red solid; */
-  }
+
+ 
   .landing-form ul li:nth-child(1) {
     grid-area: a;
   }
@@ -326,19 +491,19 @@ main {
 
 
   .landing-form-input-text {
-    height:55px;
-   
+    height: 55px;
+
   }
- 
+
   .landing-form-btn-submit {
     height: 60px;
     width: 320px;
     font-size: 24px;
   }
- 
- 
+
+
   .music-btn {
-   
+
     height: 45px;
     width: 45px;
   }
@@ -347,6 +512,32 @@ main {
     height: 30px;
     width: 30px;
   }
+
+  .instructions-wrapper{
+    padding: 5rem 2rem ;
+  }
+
+  #instructions-title{
+    font-size: 24px;
+    color: var(--orange-shade-3);
+  }
+ 
+  .instructions-card ul li{
+    font-size: 16px;
+    line-height: 140%;
+  }
+  .quiz-card {
+    justify-content: center;
+  }
+  .questions-wrapper p{
+    font-size: 16px;
+    line-height: 120%;
+   
+  }
+  .quiz-button {
+    font-size: 18px;
+  }
+ 
 }
 
 
@@ -354,8 +545,9 @@ main {
 @media screen and (min-width: 992px) {
   .landing-form ul {
     width: 992px;
-   
+
   }
+
   .landing-form-input-text {
     width: 350px;
     height: 60px;

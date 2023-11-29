@@ -1,13 +1,13 @@
-import QuizCard from "../components/QuizCard"
-
+import QuizCard from "../components/QuizCard";
+import InstructionsCard from "../components/InstructionsCard";
+import { UserAUth } from "../context/UserContext";
 const QuizPage = () => {
+   const {instructions} = UserAUth()
   return (
     <div className="quiz-page-container">
-       Quiz Page
-      <QuizCard/>
-     
+     { instructions ?  <QuizCard />  :  <InstructionsCard  />}
     </div>
-  )
-}
+  );
+};
 
-export default QuizPage
+export default QuizPage;

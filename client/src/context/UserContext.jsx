@@ -2,7 +2,6 @@ import { createContext, useEffect, useState, useContext } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import { setLocal, getLocal, removeLocal } from "../helper/helper";
 const UserContext = createContext({});
 
 export function UserProvider({ children }) {
@@ -11,15 +10,16 @@ export function UserProvider({ children }) {
     lastName: "",
     isLoggedIn: false,
   };
-
   const [user, setUser] = useState(initState);
+  const [instructions, setInstructions] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
     if (user.isLoggedIn) {
       localStorage.setItem("bbqa_user", JSON.stringify(user));
     }
-  },[user]);
+  }, [user]);
 
   useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("bbqa_user"));
@@ -28,15 +28,31 @@ export function UserProvider({ children }) {
     }
   }, [setUser]);
 
- 
- useEffect(()=>{
-    if(user.isLoggedIn){
-        navigate("/quiz",{replace: true})
+  useEffect(() => {
+    if (user.isLoggedIn) {
+      navigate("/quiz", { replace: true });
     }
-  },[user,navigate])
-            
+  }, [user, navigate]);
+  
+  useEffect(() => {
+    if (instructions) {
+      localStorage.setItem("instructions", JSON.stringify(instructions));
+    }
+  }, [instructions]);
+
+  useEffect(() => {
+    const visible = JSON.parse(localStorage.getItem("instructions"));
+    if (visible) {
+      setInstructions(visible);
+    }
+  }, [setInstructions]);
+
+  const handleInstructions = () => {
+    setInstructions(true);
+  };
+
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser,instructions,handleInstructions }}>
       {children}
       <Outlet />
     </UserContext.Provider>
