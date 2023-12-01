@@ -606,7 +606,7 @@ export const Questions = [
             "Object Representation Model",
             "Object Rendering Model"
         ],
-        correctAnswer:" A"
+        correctAnswer:"A"
     },
 
 ]

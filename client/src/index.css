@@ -4,7 +4,7 @@
 
   --white-shade-1: #fff;
   --white-shade-2: rgba(255, 255, 255, 0.77);
-  
+
   --black-shade-1: #1a1e24;
 
   --blue-shade-1: #1979B9;
@@ -13,15 +13,15 @@
   --orange-shade-1: #E18001;
   --orange-shade-2: #FF930A;
   --orange-shade-3: #FF7B06;
-  
+
   --grey-shade-1: #D9D9D9;
   --grey-shade-2: #A7A7A7;
-
+ 
   --red-shade-1: #F70000;
-  --red-shade-2:#900505;
+  --red-shade-2: #900505;
 
   --drop-shadow: drop-shadow(0 0 0.1rem var(--gainsboro));
-  
+
   --text-shadow: -0.5px -0.5px 0 #000, 0 -0.5px 0 #000, 0.5px -0.5px 0 #000,
     0.5px 0 0 #000, 0.5px 0.5px 0 #000, 0 0.5px 0 #000, -0.5px 0.5px 0 #000,
     -0.5px 0 0 #000;
@@ -41,7 +41,7 @@ body {
 
   padding: 0;
   margin: 0;
- 
+
   /* border: 1px red solid; */
   background: var(--white-shade-1);
   background: url("./assets/bg.jpg") no-repeat;
@@ -53,25 +53,35 @@ body {
 .swal2-popup {
   font-size: 12px !important;
   line-height: 250%;
-  
-  width: 600px;
+  width: 30rem;
+  min-height: 15rem;
 }
-.swal2-title{
+
+.swal2-title {
   font-size: 17px !important;
   color: var(--orange-shade-3);
 }
+
 .swal2-html-container {
   font-size: 13px !important;
-   
+  color: var(--red-shade-1) !important;
+
 }
-/* .custom-title {
-  font-size: 16px !important;
-  color: var(--orange-shade-3);
+
+.swal2-styled.swal2-cancel,
+.swal2-styled.swal2-confirm {
+  height: 2.5rem;
+  border-radius: 10px;
 }
-.custom-text{
-  font-size: 10px;
-  color: var(--red-shade-1);
-} */
+
+.swal2-styled.swal2-cancel {
+  background: var(--red-shade-1);
+}
+
+.swal2-styled.swal2-confirm {
+  background: var(--orange-shade-3);
+}
+
 .root-layout-container {
   width: 100%;
   height: 100%;
@@ -291,42 +301,56 @@ main {
 .quiz-page-container {
   width: 100%;
   height: 100%;
-  
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+ 
 }
 
+.instructions-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-.instructions-wrapper{
+}
+
+.instructions-wrapper {
+
   width: 90%;
   max-width: 992px;
+  padding: 2rem 0;
+  border-radius: 20px;
+  background: var(--white-shade-2);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 10px;
-  padding: 2rem 10px ;
-  background: var(--white-shade-2);
-  border-radius: 10px;
+  gap: 1rem;
 }
-#instructions-title{
+
+#instructions-title {
   color: var(--orange-shade-3);
 }
+
 .instructions-card ul {
-  width: 100%;
-  height: auto;
-  padding: 10px ;
+  padding: 0;
   margin: 0;
   list-style: none;
   display: flex;
+  align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 10px;
+
 }
-.instructions-card ul li{
-  font-size: 14px;
+
+.instructions-card ul li {
+  font-size: 12px;
   line-height: 130%;
+  width: 90%;
+
 }
 
 
@@ -338,7 +362,7 @@ main {
   list-style: none;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(3, 1fr) 30px 20px ;
+  grid-template-rows: repeat(3, 1fr) 30px 20px;
 }
 
 .quiz-questions {
@@ -346,6 +370,7 @@ main {
   align-items: center;
   justify-content: center;
 }
+
 .quiz-questions-wrapper {
   margin-bottom: 15px;
   width: 95%;
@@ -357,6 +382,7 @@ main {
   align-items: center;
   justify-content: center;
 }
+
 .quiz-questions-text {
   width: 100%;
   text-align: center;
@@ -370,6 +396,7 @@ main {
   align-items: center;
   justify-content: center;
 }
+
 .quiz-choices-wrapper {
   margin-bottom: 15px;
   width: 95%;
@@ -382,12 +409,23 @@ main {
   flex-direction: column;
   gap: 10px;
 }
-#button-choice {
+
+#button-choices:hover {
   background: var(--orange-shade-1);
 }
-#button-span-choice {
+
+#button-choices:hover #button-span-choices {
   background: var(--orange-shade-3);
 }
+
+#button-selected {
+  background: var(--orange-shade-1);
+}
+
+#button-span-selected {
+  background: var(--orange-shade-3);
+}
+
 
 .quiz-buttons {
   width: 100%;
@@ -400,6 +438,7 @@ main {
   outline-offset: 4px;
   text-align: left;
 }
+
 .quiz-buttons-span {
   font-size: 12px;
   line-height: 130%;
@@ -419,8 +458,9 @@ main {
   display: grid;
   justify-items: center;
 }
+
 .quiz-navigations-wrapper {
- 
+
   align-self: flex-start;
   width: 95%;
   max-width: 1024px;
@@ -435,32 +475,39 @@ main {
 #button-navigation {
   text-align: center;
 }
+
 #button-span-navigation {
   color: var(--orange-shade-2);
 }
+
 #button-navigation:hover {
   background: var(--blue-shade-1);
 }
+
 #button-navigation:hover #button-span-navigation {
   background: var(--blue-shade-2);
 }
+
 #button-submit {
   text-align: center;
   background: var(--red-shade-2);
 }
+
 #button-span-submit {
   background: var(--red-shade-1);
   color: var(--white-shade-1);
 }
 
 .quiz-item-count {
-  color: var(--white-shade-2);
+  color: var(--white-shade-1);
   width: 100%;
   margin-left: 10px;
 }
+
 .quiz-progress-bar {
   border: 1px var(--blue-shade-1) solid;
 }
+
 .quiz-progress-bar-line {
   width: 70%;
   height: 100%;
@@ -500,7 +547,7 @@ main {
 
   }
 
- 
+
   .landing-form ul li:nth-child(1) {
     grid-area: a;
   }
@@ -537,33 +584,50 @@ main {
     width: 30px;
   }
 
-  .instructions-wrapper{
-    padding: 5rem 2rem ;
+  .instructions-wrapper {
+    padding: 5rem 2rem;
   }
 
-  #instructions-title{
+  #instructions-title {
     font-size: 24px;
     color: var(--orange-shade-3);
   }
- 
-  .instructions-card ul li{
+
+  .instructions-card ul li {
     font-size: 16px;
     line-height: 140%;
   }
- 
+
   .quiz-questions-text {
     font-size: 15px;
   }
+
   .quiz-buttons {
     height: 100%;
   }
+
   .quiz-buttons-span {
     padding: 30px 42px;
     font-size: 16px;
   }
- 
-  .quiz-item-count{
-    font-size: 24px;
+
+  .quiz-item-count {
+    font-size: 22px;
+  }
+
+
+  .swal2-popup {
+    width: 40rem;
+    min-height: 15rem;
+  }
+  
+  .swal2-title {
+    font-size: 20px !important;
+  }
+  
+  .swal2-html-container {
+    font-size: 14px !important;
+  
   }
 }
 
@@ -603,7 +667,15 @@ main {
     font-size: 18px;
   }
 
-  .quiz-item-count{
+  .quiz-item-count {
     font-size: 26px;
+  }
+
+  .swal2-title {
+    font-size: 24px !important;
+  }
+  
+  .swal2-html-container {
+    font-size: 16px !important;
   }
 }

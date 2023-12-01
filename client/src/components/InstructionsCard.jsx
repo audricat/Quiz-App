@@ -12,7 +12,7 @@ const InstructionsCard = () => {
     {
       id: 2,
       details:
-        "   Progress bar and Question Number for monitoring current progress.",
+        "Progress bar and Question Number for monitoring current progress.",
     },
     {
       id: 3,
@@ -26,7 +26,7 @@ const InstructionsCard = () => {
     {
       id: 5,
       details:
-        " Aim to achieve a passing score of 35 points if you fall short, you can retake the quiz for another attempt.",
+        "Aim to achieve a passing score of 35 points if you fall short, you can retake the quiz for another attempt.",
     },
     {
       id: 6,
@@ -37,7 +37,7 @@ const InstructionsCard = () => {
   return (
     <div className="instructions-card">
      <div className="instructions-wrapper">
-     <span id="instructions-title">INSTRUCTIONS</span>
+     <h2 id="instructions-title">INSTRUCTIONS</h2>
       <ul>
         {instructions.map((item, idx) => {
           return (
