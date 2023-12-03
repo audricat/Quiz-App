@@ -12,9 +12,8 @@ const ScoreCard = () => {
     };
 
     const handleUnload = (event) => {
-      localStorage.removeItem("bbqa_user")
-      localStorage.removeItem("users_answers")
-      localStorage.removeItem("instructions")
+      const storageName = ["bbqa_user", "users_answers", "instructions"];
+      storageName.map((lsName) => localStorage.removeItem(lsName));
     };
 
     // In app component
