@@ -79,7 +79,8 @@ export function UserProvider({ children }) {
 
   const handleNext = () => {
     if (page !== Questions.length - 1) {
-      setPage((page) => page + 49);
+      // setPage((page) => page + 1);
+      setPage(Questions.length - 1);
     }
   };
 

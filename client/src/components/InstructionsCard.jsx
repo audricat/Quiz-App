@@ -37,7 +37,7 @@ const InstructionsCard = () => {
   return (
     <div className="instructions-card">
      <div className="instructions-wrapper">
-     <h2 id="instructions-title">INSTRUCTIONS</h2>
+     <h2 id="page-title">INSTRUCTIONS</h2>
       <ul>
         {instructions.map((item, idx) => {
           return (
