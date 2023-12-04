@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
-import { UserAUth } from "../context/UserContext";
-const InstructionsCard = () => {
-  const { handleInstructions } = UserAUth();
+
+const InstructionsCard = (props) => {
+  const { handleInstructions } = props;
 
   const instructions = [
     {
@@ -36,25 +36,25 @@ const InstructionsCard = () => {
 
   return (
     <div className="instructions-card">
-     <div className="instructions-wrapper">
-     <h2 id="page-title">INSTRUCTIONS</h2>
-      <ul>
-        {instructions.map((item, idx) => {
-          return (
-            <li key={idx}>
-              {item.id}. {item.details}
-            </li>
-          );
-        })}
-      </ul>
-      <button
-        type="button"
-        className="landing-form-btn-submit"
-        onClick={handleInstructions}
-      >
-        OK
-      </button>
-     </div>
+      <div className="instructions-wrapper">
+        <h2 id="page-title">INSTRUCTIONS</h2>
+        <ul>
+          {instructions.map((item, idx) => {
+            return (
+              <li key={idx}>
+                {item.id}. {item.details}
+              </li>
+            );
+          })}
+        </ul>
+        <button
+          type="button"
+          className="landing-form-btn-submit"
+          onClick={handleInstructions}
+        >
+          OK
+        </button>
+      </div>
     </div>
   );
 };
@@ -62,5 +62,5 @@ const InstructionsCard = () => {
 export default InstructionsCard;
 
 InstructionsCard.propTypes = {
-  handleModal: PropTypes.func,
+  handleInstructions: PropTypes.func,
 };

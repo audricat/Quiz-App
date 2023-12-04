@@ -1,24 +1,67 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Questions } from "../database/Questions";
-import { UserAUth } from "../context/UserContext";
+
 
 import Swal from "sweetalert2";
 const QuizCard = () => {
-  const {
-    progress,
-    handleNext,
-    handlePrevious,
-    handleAnswers,
-    numToChar,
-    selectedAnswer,
-    page,
-  } = UserAUth();
+
+
+  const [page, setPage] = useState(0);
+  const [answers, setAnswers] = useState(Array(Questions.length));
   const { itemNumber, question, choices } = Questions[page];
   const navigate = useNavigate();
-  const submitResponse = () => {
-    // navigate to result page
 
+  useEffect(() => {
+    const currentAnswers = JSON.parse(localStorage.getItem("users_answers"));
+    if (currentAnswers === null || currentAnswers === undefined) {
+      localStorage.setItem("users_answers", JSON.stringify(answers));
+    }
+  });
+  useEffect(() => {
+    const currentAnswers = JSON.parse(localStorage.getItem("users_answers"));
+    if (currentAnswers) {
+      setAnswers(currentAnswers);
+    }
+  }, [setAnswers]);
+
+  const progress = () => {
+    return (itemNumber * 100) / Questions.length;
+  };
+
+  const numToChar = (num) => {
+    const char = ["A", "B", "C", "D"];
+    return num <= char.length ? char[num] : null;
+  };
+
+  const handleNext = () => {
+    if (page !== Questions.length - 1) {
+      setPage((page) => page + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    if (page > 0) {
+      setPage((page) => page - 1);
+    }
+  };
+
+  const handleAnswers = (choice) => {
+    const oldAnswers = [...answers];
+    oldAnswers.splice(itemNumber - 1, 1, choice);
+    setAnswers(oldAnswers);
+    localStorage.setItem("users_answers", JSON.stringify(oldAnswers));
+  };
+
+  const selectedAnswer = (idx) => {
+    return answers[itemNumber - 1] === numToChar(idx) ? true : false;
+  };
+
+
+
+
+  const submitResponse = () => {
+ 
     Swal.fire({
       title: "Are you sure you want to submit your quiz?",
       text: "Once submitted, you cannot make any changes.",

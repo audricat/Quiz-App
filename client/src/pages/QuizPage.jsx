@@ -1,17 +1,23 @@
 import QuizCard from "../components/QuizCard";
 import InstructionsCard from "../components/InstructionsCard";
-import { UserAUth } from "../context/UserContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
 const QuizPage = () => {
-  const { instructions } = UserAUth();
+
+  const [instructions, setInstructions] = useState(false);
+ 
+
+
   useEffect(() => {
-    const handleBeforeUnload = (event) => {
+    const handleBeforeUnload = () => {
       return "Changes that you made may not be saved.";
     };
 
-    const handleUnload = (event) => {
-      const storageName = ["bbqa_user", "users_answers", "instructions"];
-      storageName.map((lsName) => localStorage.removeItem(lsName));
+    const handleUnload = () => {
+      const storageName = [ "users_answers","bbqa_user" , "instructions"];
+      for (let store of storageName) {
+        localStorage.removeItem(store);
+      }
     };
 
     // In app component
@@ -25,9 +31,31 @@ const QuizPage = () => {
     };
   });
 
+  useEffect(() => {
+    if (instructions) {
+      localStorage.setItem("instructions", JSON.stringify(instructions));
+    }
+  }, [instructions]);
+
+  useEffect(() => {
+    const visible = JSON.parse(localStorage.getItem("instructions"));
+    if (visible) {
+      setInstructions(visible);
+    }
+  }, [setInstructions]);
+
+
+
+  const handleInstructions = () => {
+    setInstructions(true);
+  };
+
+
+
+
   return (
     <div className="quiz-page-container">
-      {instructions ? <QuizCard /> : <InstructionsCard />}
+      {instructions ? <QuizCard /> : <InstructionsCard handleInstructions={handleInstructions}/>}
     </div>
   );
 };

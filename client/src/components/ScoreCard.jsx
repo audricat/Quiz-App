@@ -1,22 +1,20 @@
-import { useEffect } from "react";
-import { UserAUth } from "../context/UserContext";
+import { useEffect, useState } from "react";
 import { CorrectAnswerList, Questions } from "../database/Questions";
-import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 const ScoreCard = () => {
-  const { answers } = UserAUth();
+  const [answers, setAnswers] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    const handleBeforeUnload = (event) => {
+    const handleBeforeUnload = () => {
       return "Changes that you made may not be saved.";
     };
 
-    const handleUnload = (event) => {
-      const storageName = ["bbqa_user", "users_answers", "instructions"];
-      storageName.map((lsName) => localStorage.removeItem(lsName));
+    const handleUnload = () => {
+      const storageName = ["users_answers", "bbqa_user", "instructions"];
+      for (let store of storageName) {
+        localStorage.removeItem(store);
+      }
     };
-
-    // In app component
 
     window.addEventListener("beforeunload", handleBeforeUnload);
     window.addEventListener("unload", handleUnload);
@@ -26,6 +24,13 @@ const ScoreCard = () => {
       window.addEventListener("unload", handleUnload);
     };
   });
+
+  useEffect(() => {
+    const currentAnswers = JSON.parse(localStorage.getItem("users_answers"));
+    if (currentAnswers) {
+      setAnswers(currentAnswers);
+    }
+  }, [setAnswers]);
 
   const totalScore = () => {
     const correctAnswers = CorrectAnswerList();
@@ -61,6 +66,14 @@ const ScoreCard = () => {
     }
   };
 
+  const retake = () => {
+    const storageName = ["bbqa_user", "users_answers", "instructions"];
+    storageName.map((lsName) => localStorage.removeItem(lsName));
+    if (storageName) {
+      navigate("/", { replace: true });
+    }
+  };
+
   return (
     <ul className="score-card">
       <li>
@@ -76,7 +89,9 @@ const ScoreCard = () => {
       <li className="score-remarks">{remarks()}</li>
       <li className="score-message">{message()}</li>
       <li>
-        <button className="landing-form-btn-submit">RETAKE</button>
+        <button className="landing-form-btn-submit" onClick={retake}>
+          RETAKE
+        </button>
       </li>
     </ul>
   );
