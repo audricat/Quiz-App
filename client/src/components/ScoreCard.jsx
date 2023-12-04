@@ -52,7 +52,7 @@ const ScoreCard = () => {
 
   const remarks = () => {
     const score = totalScore();
-    return score >= passingScore() ? "Congratulations." : "You failed.";
+    return score >= passingScore() ? true : false;
   };
 
   const message = () => {
@@ -86,8 +86,10 @@ const ScoreCard = () => {
           <li>PASSING POINTS: {passingScore()}</li>
         </ul>
       </li>
-      <li className="score-remarks">{remarks()}</li>
-      <li className="score-message">{message()}</li>
+      <li id={remarks() ? "passed-remarks" : "failed-remarks"}>
+        {remarks() ? "Congratulation!" : "You failed."}
+        </li>
+      <li>{message()}</li>
       <li>
         <button className="landing-form-btn-submit" onClick={retake}>
           RETAKE

@@ -2,11 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Questions } from "../database/Questions";
 
-
 import Swal from "sweetalert2";
 const QuizCard = () => {
-
-
   const [page, setPage] = useState(0);
   const [answers, setAnswers] = useState(Array(Questions.length));
   const { itemNumber, question, choices } = Questions[page];
@@ -18,6 +15,7 @@ const QuizCard = () => {
       localStorage.setItem("users_answers", JSON.stringify(answers));
     }
   });
+
   useEffect(() => {
     const currentAnswers = JSON.parse(localStorage.getItem("users_answers"));
     if (currentAnswers) {
@@ -57,23 +55,18 @@ const QuizCard = () => {
     return answers[itemNumber - 1] === numToChar(idx) ? true : false;
   };
 
-
-
-
   const submitResponse = () => {
- 
     Swal.fire({
       title: "Are you sure you want to submit your quiz?",
       text: "Once submitted, you cannot make any changes.",
       showCancelButton: true,
       cancelButtonText: "CANCEL",
 
-
       confirmButtonText: "SUBMIT",
       reverseButtons: true,
       allowOutsideClick: false,
     }).then(function (res) {
-      if(res.isConfirmed){
+      if (res.isConfirmed) {
         navigate("/score", { replace: true });
       }
     });
