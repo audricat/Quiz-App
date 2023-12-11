@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 const QuizCard = () => {
   const [page, setPage] = useState(0);
   const [answers, setAnswers] = useState(Array(Questions.length));
+  const [itemCount] = useState(Questions.length)
   const { itemNumber, question, choices } = Questions[page];
   const navigate = useNavigate();
 
@@ -24,7 +25,7 @@ const QuizCard = () => {
   }, [setAnswers]);
 
   const progress = () => {
-    return (itemNumber * 100) / Questions.length;
+    return (itemNumber * 100) / itemCount;
   };
 
   const numToChar = (num) => {
@@ -33,7 +34,7 @@ const QuizCard = () => {
   };
 
   const handleNext = () => {
-    if (page !== Questions.length - 1) {
+    if (page !== itemCount - 1) {
       setPage((page) => page + 1);
     }
   };
@@ -114,11 +115,11 @@ const QuizCard = () => {
             onClick={handlePrevious}
           >
             <span className="quiz-buttons-span" id="button-span-navigation">
-              PREV
+              PREVIOUS
             </span>
           </button>
 
-          {itemNumber === Questions.length ? (
+          {itemNumber === itemCount ? (
             <button
               className="quiz-buttons"
               id="button-submit"
@@ -144,15 +145,15 @@ const QuizCard = () => {
 
       <li className="quiz-progress-items">
         <span className="quiz-item-count">
-          {itemNumber}/{Questions.length}
+          {itemNumber}/{itemCount}
         </span>
       </li>
 
       <li className="quiz-progress-bar">
-        <div
+        <span
           className="quiz-progress-bar-line"
           style={{ width: `${progress()}%` }}
-        ></div>
+        ></span>
       </li>
     </ul>
   );

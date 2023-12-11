@@ -15,17 +15,20 @@ import QuizPage from "./pages/QuizPage";
 import ScorePage from "./pages/ScorePage";
 import PageNotFound from "./pages/PageNotFound";
 import PrivateRoute from "./pages/PrivateRoute";
+import { SoundProvider } from "./context/SoundContext";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route element={<UserProvider />}>
-        <Route element={<RootLayout />}>
-          <Route path="*" element={<PageNotFound />} />
-          <Route path="/" element={<LandingPage />} />
-          <Route element={<PrivateRoute />}>
-            <Route path="/quiz" element={<QuizPage />} />
-            <Route path="/score" element={<ScorePage />} />
+        <Route element={<SoundProvider />}>
+          <Route element={<RootLayout />}>
+            <Route path="*" element={<PageNotFound />} />
+            <Route path="/" element={<LandingPage />} />
+            <Route element={<PrivateRoute />}>
+              <Route path="/quiz" element={<QuizPage />} />
+              <Route path="/score" element={<ScorePage />} />
+            </Route>
           </Route>
         </Route>
       </Route>
