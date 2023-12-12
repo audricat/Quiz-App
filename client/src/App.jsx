@@ -7,6 +7,8 @@ import {
 
 //Context
 import { UserProvider } from "./context/UserContext";
+import { SoundProvider } from "./context/SoundContext";
+import { QuestionProvider } from "./context/QuestionContext";
 
 //Pages
 import RootLayout from "./pages/RootLayout";
@@ -15,7 +17,6 @@ import QuizPage from "./pages/QuizPage";
 import ScorePage from "./pages/ScorePage";
 import PageNotFound from "./pages/PageNotFound";
 import PrivateRoute from "./pages/PrivateRoute";
-import { SoundProvider } from "./context/SoundContext";
 
 function App() {
   const router = createBrowserRouter(
@@ -26,8 +27,10 @@ function App() {
             <Route path="*" element={<PageNotFound />} />
             <Route path="/" element={<LandingPage />} />
             <Route element={<PrivateRoute />}>
-              <Route path="/quiz" element={<QuizPage />} />
-              <Route path="/score" element={<ScorePage />} />
+              <Route element={<QuestionProvider />}>
+                <Route path="/quiz" element={<QuizPage />} />
+                <Route path="/score" element={<ScorePage />} />
+              </Route>
             </Route>
           </Route>
         </Route>

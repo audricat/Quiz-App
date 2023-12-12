@@ -1,13 +1,13 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { UserAUth } from "../context/UserContext";
-import { useNavigate } from "react-router-dom";
+import SoundContext from "../context/SoundContext";
 
 const LandingForm = () => {
   const { setUser } = UserAUth();
-
+  const {playSound} = useContext(SoundContext)
   const [fullName, setFullName] = useState({
     fName: "",
     lName: "",
@@ -17,13 +17,13 @@ const LandingForm = () => {
     fName: yup
       .string()
       .typeError("Please enter your First Name.")
-      .required("First Name is required.")
+      .required("THIS INPUT FIELD IS REQUIRED")
       .min(1, "First Name must be atleast 1 character.")
       .max(50, "First Name must be no longer than 50 characters."),
     lName: yup
       .string()
       .typeError("Please enter your Last Name.")
-      .required("Last Name is required.")
+      .required("THIS INPUT FIELD IS REQUIRED")
       .min(1, "Last Name must be atleast 1 character.")
       .max(50, "Last Name must be no longer than 50 characters."),
   });
@@ -62,19 +62,19 @@ const LandingForm = () => {
       lastName: fullName.lName,
       isLoggedIn: true,
     }));
-    
+    playSound()
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmitForm)} className="landing-form">
-      <ul className="landing-card">
-        <li>
-          <span className="landing-form-input-label">FIRST NAME</span>
+      <ul className="landing-form-wrapper">
+        <li id="form-li-a">
+          <span className="input-label">FIRST NAME</span>
           <input
             type="text"
             inputMode="text"
             name="fName"
-            className="landing-form-input-text"
+            className="form-inputs"
             value={fullName.fName}
             placeholder="ENTER YOUR FIRST NAME"
             autoComplete="off"
@@ -84,18 +84,19 @@ const LandingForm = () => {
               onChange: onChangeName,
             })}
           />
-          <small className="landing-form-error-msg">
-            {errors.fName?.message}
+          <small className="input-error-message">
+          {errors.fName?.message ? errors.fName?.message : <span className="hidden-error-message">THIS INPUT FIELD IS REQUIRED</span> }
           </small>
         </li>
 
-        <li>
-          <span className="landing-form-input-label">LAST NAME</span>
+
+        <li id="form-li-b">
+          <span className="input-label">LAST NAME</span>
           <input
             type="text"
             inputMode="text"
             name="lName"
-            className="landing-form-input-text"
+            className="form-inputs"
             value={fullName.lName}
             placeholder="ENTER YOUR LAST NAME"
             autoComplete="off"
@@ -105,17 +106,19 @@ const LandingForm = () => {
               onChange: onChangeName,
             })}
           />
-          <small className="landing-form-error-msg">
-            {errors.lName?.message } 
+          <small className="input-error-message">
+          {errors.lName?.message ? errors.lName?.message :<span className="hidden-error-message">THIS INPUT FIELD IS REQUIRED</span> }
           </small>
         </li>
-        <li>
+
+        <li id="form-li-c">
           <button
             type="submit"
-            className="landing-form-btn-submit"
+            className="global-button"
             disabled={!isDirty || !isValid}
+            id={!isDirty || !isValid ? "enabled" : "disabled" }
           >
-            START QUIZ
+            <span className="global-button-span">START QUIZ</span>
           </button>
         </li>
       </ul>

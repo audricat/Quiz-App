@@ -1,104 +1,58 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Questions } from "../database/Questions";
+import { useContext } from "react";
+import QuestionContext from "../context/QuestionContext";
 
-import Swal from "sweetalert2";
 const QuizCard = () => {
-  const [page, setPage] = useState(0);
-  const [answers, setAnswers] = useState(Array(Questions.length));
-  const [itemCount] = useState(Questions.length)
-  const { itemNumber, question, choices } = Questions[page];
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const currentAnswers = JSON.parse(localStorage.getItem("users_answers"));
-    if (currentAnswers === null || currentAnswers === undefined) {
-      localStorage.setItem("users_answers", JSON.stringify(answers));
-    }
-  });
-
-  useEffect(() => {
-    const currentAnswers = JSON.parse(localStorage.getItem("users_answers"));
-    if (currentAnswers) {
-      setAnswers(currentAnswers);
-    }
-  }, [setAnswers]);
-
-  const progress = () => {
-    return (itemNumber * 100) / itemCount;
-  };
-
-  const numToChar = (num) => {
-    const char = ["A", "B", "C", "D"];
-    return num <= char.length ? char[num] : null;
-  };
-
-  const handleNext = () => {
-    if (page !== itemCount - 1) {
-      setPage((page) => page + 1);
-    }
-  };
-
-  const handlePrevious = () => {
-    if (page > 0) {
-      setPage((page) => page - 1);
-    }
-  };
-
-  const handleAnswers = (choice) => {
-    const oldAnswers = [...answers];
-    oldAnswers.splice(itemNumber - 1, 1, choice);
-    setAnswers(oldAnswers);
-    localStorage.setItem("users_answers", JSON.stringify(oldAnswers));
-  };
-
-  const selectedAnswer = (idx) => {
-    return answers[itemNumber - 1] === numToChar(idx) ? true : false;
-  };
-
-  const submitResponse = () => {
-    Swal.fire({
-      title: "Are you sure you want to submit your quiz?",
-      text: "Once submitted, you cannot make any changes.",
-      showCancelButton: true,
-      cancelButtonText: "CANCEL",
-
-      confirmButtonText: "SUBMIT",
-      reverseButtons: true,
-      allowOutsideClick: false,
-    }).then(function (res) {
-      if (res.isConfirmed) {
-        navigate("/score", { replace: true });
-      }
-    });
-  };
+  const {
+    itemNumber,
+    itemCount,
+    question,
+    choices,
+    handleAnswers,
+    selectedAnswer,
+    numToChar,
+    handlePrevious,
+    submitResponse,
+    handleNext,
+    progress,
+  } = useContext(QuestionContext);
 
   return (
     <ul className="quiz-card">
-      <li className="quiz-questions">
-        <div className="quiz-questions-wrapper">
-          <p className="quiz-questions-text">
+      <li>
+        <div id="item-count-wrapper">
+          <span>Question</span>
+          <span>
+            {itemNumber}/{itemCount}
+          </span>
+        </div>
+      </li>
+      <li id="progress-bar">
+        <div id="progress-bar-wrapper">
+          <div id="progress-line" style={{ width: `${progress()}%` }}></div>
+        </div>
+      </li>
+
+      <li id="questions">
+        <div id="questions-wrapper">
+          <p id="question-text">
             <span>{itemNumber}.</span> {question}
           </p>
         </div>
       </li>
-      <li className="quiz-choices">
-        <div className="quiz-choices-wrapper">
+
+      <li id="answer-choices">
+        <div id="answer-choices-wrapper">
           {choices.map((choice, idx) => {
             return (
               <button
-                className="quiz-buttons"
-                id={selectedAnswer(idx) ? "button-selected" : "button-choices"}
-                key={idx}
+                className="quiz-button"
                 onClick={() => handleAnswers(numToChar(idx))}
+                key={idx}
+                id={selectedAnswer(idx) ? "button-selected" : "button-unselected"}
               >
                 <span
-                  className="quiz-buttons-span"
-                  id={
-                    selectedAnswer(idx)
-                      ? "button-span-selected"
-                      : "button-span-choices"
-                  }
+                  className="quiz-span"
+                  id={selectedAnswer(idx) ? "span-selected" : "span-unselected"}
                 >
                   {numToChar(idx)}.{choice}
                 </span>
@@ -107,53 +61,35 @@ const QuizCard = () => {
           })}
         </div>
       </li>
-      <li className="quiz-navigations">
-        <div className="quiz-navigations-wrapper">
+
+      <li id="quiz-navigation">
+        <div id="quiz-navigation-wrapper">
           <button
-            className="quiz-buttons"
-            id="button-navigation"
+            className="quiz-button"
+            id="button-navigate"
             onClick={handlePrevious}
           >
-            <span className="quiz-buttons-span" id="button-span-navigation">
-              PREVIOUS
-            </span>
+            <span className="quiz-span">PREVIOUS</span>
           </button>
 
           {itemNumber === itemCount ? (
             <button
-              className="quiz-buttons"
+              className="quiz-button"
               id="button-submit"
               onClick={submitResponse}
             >
-              <span className="quiz-buttons-span" id="button-span-submit">
-                SUBMIT
-              </span>
+              <span className="quiz-span">SUBMIT</span>
             </button>
           ) : (
             <button
-              className="quiz-buttons"
-              id="button-navigation"
+              className="quiz-button"
+              id="button-navigate"
               onClick={handleNext}
             >
-              <span className="quiz-buttons-span" id="button-span-navigation">
-                NEXT
-              </span>
+              <span className="quiz-span">NEXT</span>
             </button>
           )}
         </div>
-      </li>
-
-      <li className="quiz-progress-items">
-        <span className="quiz-item-count">
-          {itemNumber}/{itemCount}
-        </span>
-      </li>
-
-      <li className="quiz-progress-bar">
-        <span
-          className="quiz-progress-bar-line"
-          style={{ width: `${progress()}%` }}
-        ></span>
       </li>
     </ul>
   );

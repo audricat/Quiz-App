@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import { CorrectAnswerList, Questions } from "../database/Questions";
 import { useNavigate } from "react-router-dom";
+import { UserAUth } from "../context/UserContext";
 const ScoreCard = () => {
   const [answers, setAnswers] = useState([]);
   const navigate = useNavigate();
+
+  const {user} = UserAUth()
   useEffect(() => {
     const handleBeforeUnload = () => {
       return "Changes that you made may not be saved.";
@@ -75,24 +78,40 @@ const ScoreCard = () => {
   };
 
   return (
-    <ul className="score-card">
-      <li>
-        <h2 id="page-title">RESULTS</h2>
+    <ul className="score-card-wrapper">
+      <li id="score-title">
+        <h1>RESULTS</h1>
       </li>
-      <li>
-        <ul className="scores">
-          <li>YOUR POINTS</li>
-          <li>{totalScore()}</li>
-          <li>PASSING POINTS: {passingScore()}</li>
+
+      <li id="overall-score">
+        <ul id="overall-score-wrapper">
+          <li>
+            <h2>{user.firstName} { user.lastName} SCORE:</h2>
+          </li>
+          <li>
+            <h2 id="total-points">{totalScore()}</h2>
+          </li>
+          <li>
+            <span>Passing Points: {passingScore()}</span>
+          </li>
         </ul>
       </li>
-      <li id={remarks() ? "passed-remarks" : "failed-remarks"}>
-        {remarks() ? "Congratulation!" : "You failed."}
-        </li>
-      <li>{message()}</li>
-      <li>
-        <button className="landing-form-btn-submit" onClick={retake}>
-          RETAKE
+
+      <li id="score-remarks">
+        <span id={remarks() ? "passed-remarks" : "failed-remarks"}>
+          {" "}
+          {remarks() ? "Congratulation!" : "You failed."}
+        </span>
+        <span>{message()}</span>
+      </li>
+
+      <li id="score-navigation">
+        <button
+          className="global-button"
+          id="score-submit-button"
+          onClick={retake}
+        >
+          <span className="global-button-span">RETAKE</span>
         </button>
       </li>
     </ul>

@@ -13,7 +13,7 @@ export function SoundProvider({ children }) {
   const playSound = () => {
     musicRef.play();
     musicRef.loop = true;
-    musicRef.volume = 0.35;
+    musicRef.volume = 0.75;
     setIsPlaying(true);
   };
 
