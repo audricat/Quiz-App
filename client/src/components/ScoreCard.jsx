@@ -86,7 +86,7 @@ const ScoreCard = () => {
       <li id="overall-score">
         <ul id="overall-score-wrapper">
           <li>
-            <h2>{user.firstName} { user.lastName} SCORE:</h2>
+            <h2>{user.firstName} { user.lastName.charAt(0)}. SCORE:</h2>
           </li>
           <li>
             <h2 id="total-points">{totalScore()}</h2>
@@ -99,7 +99,6 @@ const ScoreCard = () => {
 
       <li id="score-remarks">
         <span id={remarks() ? "passed-remarks" : "failed-remarks"}>
-          {" "}
           {remarks() ? "Congratulation!" : "You failed."}
         </span>
         <span>{message()}</span>

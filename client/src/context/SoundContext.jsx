@@ -10,19 +10,19 @@ export function SoundProvider({ children }) {
   const musicRef = useRef(new Audio(musicLink)).current;
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const playSound = () => {
+  const playMusic = () => {
     musicRef.play();
     musicRef.loop = true;
     musicRef.volume = 0.75;
     setIsPlaying(true);
   };
 
-  const pauseSound = () => {
+  const pauseMusic = () => {
     musicRef.pause();
     setIsPlaying(false);
   };
   return (
-    <SoundContext.Provider value={{isPlaying,playSound,pauseSound}}>
+    <SoundContext.Provider value={{isPlaying,playMusic,pauseMusic}}>
       {children}
       <Outlet />
     </SoundContext.Provider>

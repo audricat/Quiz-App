@@ -7,7 +7,7 @@ import SoundContext from "../context/SoundContext";
 
 const LandingForm = () => {
   const { setUser } = UserAUth();
-  const {playSound} = useContext(SoundContext)
+  const {isPlaying, playMusic} = useContext(SoundContext)
   const [fullName, setFullName] = useState({
     fName: "",
     lName: "",
@@ -62,7 +62,9 @@ const LandingForm = () => {
       lastName: fullName.lName,
       isLoggedIn: true,
     }));
-    playSound()
+     if(!isPlaying){
+      playMusic()
+     }
   };
 
   return (

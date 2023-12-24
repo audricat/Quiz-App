@@ -68,8 +68,9 @@ const QuizCard = () => {
             className="quiz-button"
             id="button-navigate"
             onClick={handlePrevious}
+            disabled={itemNumber === 1 }
           >
-            <span className="quiz-span">PREVIOUS</span>
+            <span className="quiz-span" >PREVIOUS</span>
           </button>
 
           {itemNumber === itemCount ? (
@@ -89,6 +90,8 @@ const QuizCard = () => {
               <span className="quiz-span">NEXT</span>
             </button>
           )}
+
+        
         </div>
       </li>
     </ul>

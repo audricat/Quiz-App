@@ -36,6 +36,7 @@ const InstructionsCard = (props) => {
       details:
         "Manage background music throughout the quiz, turn on and off as desired.",
     },
+    
   ];
 
   return (
@@ -44,13 +45,17 @@ const InstructionsCard = (props) => {
         <li id="instructions-title">
           <h2>INSTRUCTIONS</h2>
         </li>
-        {instructions.map((item, idx) => {
+        <li className="list-wrapper">
+          <ul className="instructions-list">
+          {instructions.map((item, idx) => {
           return (
             <li key={idx}>
               {item.id}. {item.details}
             </li>
           );
         })}
+          </ul>
+        </li>
         <li id="instructions-navigation">
           <button className="global-button" onClick={handleInstructions}>
             <span className="global-button-span">OK</span>
