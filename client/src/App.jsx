@@ -23,11 +23,11 @@ function App() {
     createRoutesFromElements(
       <Route element={<UserProvider />}>
         <Route element={<SoundProvider />}>
+        <Route element={<QuestionProvider />}>
           <Route element={<RootLayout />}>
             <Route path="*" element={<PageNotFound />} />
             <Route path="/" element={<LandingPage />} />
             <Route element={<PrivateRoute />}>
-              <Route element={<QuestionProvider />}>
                 <Route path="/quiz" element={<QuizPage />} />
                 <Route path="/score" element={<ScorePage />} />
               </Route>

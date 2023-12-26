@@ -100,7 +100,7 @@ export const Questions = [
 
     {
         itemNumber: 9,
-        question: "What does URL stand for?",
+        question: "What punctuation mark is typically used to end a line of code in many programming languages?",
         choices: [
             "Uniform Resource Locator",
             "Universal Remote Link",
@@ -380,14 +380,14 @@ export const Questions = [
 
     {
         itemNumber: 32,
-        question: "What does URL stand for?",
+        question: "What punctuation mark is typically used to end a line of code in many programming languages?",
         choices: [
-            "Uniform Resource Locator",
-            "Unified Resource Link",
-            "Universal Remote Link",
-            "Unified Resource Locator"
+            "Period (.)",
+            "Comma (,)",
+            "Semicolon (;)",
+            "Colon (:)"
         ],
-        correctAnswer: "A"
+        correctAnswer: "C"
     },
 
     {

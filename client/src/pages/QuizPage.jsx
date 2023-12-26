@@ -8,28 +8,28 @@ const QuizPage = () => {
  
 
 
-  useEffect(() => {
-    const handleBeforeUnload = () => {
-      return "Changes that you made may not be saved.";
-    };
+  // useEffect(() => {
+  //   const handleBeforeUnload = () => {
+  //     return "Changes that you made may not be saved.";
+  //   };
 
-    const handleUnload = () => {
-      const storageName = [ "users_answers","bbqa_user" , "instructions"];
-      for (let store of storageName) {
-        localStorage.removeItem(store);
-      }
-    };
+  //   const handleUnload = () => {
+  //     const storageName = [ "users_answers","bbqa_user" , "instructions"];
+  //     for (let store of storageName) {
+  //       localStorage.removeItem(store);
+  //     }
+  //   };
 
-    // In app component
+  //   // In app component
 
-    window.addEventListener("beforeunload", handleBeforeUnload);
-    window.addEventListener("unload", handleUnload);
+  //   window.addEventListener("beforeunload", handleBeforeUnload);
+  //   window.addEventListener("unload", handleUnload);
 
-    return () => {
-      window.addEventListener("beforeunload", handleBeforeUnload);
-      window.addEventListener("unload", handleUnload);
-    };
-  });
+  //   return () => {
+  //     window.addEventListener("beforeunload", handleBeforeUnload);
+  //     window.addEventListener("unload", handleUnload);
+  //   };
+  // });
 
   useEffect(() => {
     if (instructions) {
