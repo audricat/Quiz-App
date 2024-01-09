@@ -1,21 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CorrectAnswerList, Questions } from "../database/Questions";
 import { useNavigate } from "react-router-dom";
 import { UserAUth } from "../context/UserContext";
+import SummaryCard from './SummaryCard'
+import QuestionContext from "../context/QuestionContext";
 const ScoreCard = () => {
-  const [answers, setAnswers] = useState([]);
+  const {answers} = useContext(QuestionContext);
+  const [toggleSummary,setToggleSummary] = useState(false)
   const navigate = useNavigate();
-
   const {user} = UserAUth()
  
-
-  useEffect(() => {
-    const currentAnswers = JSON.parse(localStorage.getItem("users_answers"));
-    if (currentAnswers) {
-      setAnswers(currentAnswers);
-    }
-  }, [setAnswers]);
-
   const totalScore = () => {
     const correctAnswers = CorrectAnswerList();
     let sameIndexValue = [];
@@ -57,7 +51,16 @@ const ScoreCard = () => {
       navigate("/", { replace: true });
     }
   };
-
+  
+  const openSummary = ()=>{
+    setToggleSummary(true)
+  }
+  const closeSummary = ()=>{
+    setToggleSummary(false)
+  }
+  if(toggleSummary){
+    return  <SummaryCard closeSummary={closeSummary}/> 
+  }
   return (
     <ul className="score-card-wrapper">
       <li id="score-title">
@@ -86,6 +89,14 @@ const ScoreCard = () => {
       </li>
 
       <li id="score-navigation">
+      <button
+          className="global-button"
+          id="score-submit-button"
+          onClick={openSummary}
+        >
+          <span className="global-button-span">SUMMARY</span>
+        </button>
+    
         <button
           className="global-button"
           id="score-submit-button"

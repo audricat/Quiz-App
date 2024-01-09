@@ -2,15 +2,17 @@ import { Outlet, useLocation } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { UserAUth } from "../context/UserContext";
 import { useEffect } from "react";
-
+import Swal from 'sweetalert2'
 const PrivateRoute = () => {
   const { user } = UserAUth();
   const location = useLocation();
   useEffect(() => {
-    window.addEventListener('beforeunload', alertUser)
+ 
+   
+    window.addEventListener('beforeunload', alertWarning)
     window.addEventListener('unload', handleTabClosing)
     return () => {
-        window.removeEventListener('beforeunload', alertUser)
+        window.removeEventListener('beforeunload', alertWarning)
         window.removeEventListener('unload', handleTabClosing)
     }
 })
@@ -22,9 +24,9 @@ const handleTabClosing = () => {
       }
 }
 
-const alertUser = (event) => {
-    event.preventDefault()
-    event.returnValue = ''
+const alertWarning = (event) => {
+  event.preventDefault()
+  event.returnValue =""
 }
 
   return user.isLoggedIn ? (

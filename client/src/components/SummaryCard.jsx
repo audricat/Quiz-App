@@ -5,57 +5,9 @@ import PropTypes from 'prop-types'
 import { GoXCircle, GoCheckCircle, GoSkip } from "react-icons/go";
 const SummaryCard = (props) => {
   const {closeSummary} = props;
-  const { numToChar } = useContext(QuestionContext);
+  const {answers, numToChar } = useContext(QuestionContext);
 
-  const quesTions = [
-    {
-      itemNumber: 1,
-      question: "Which programming language is used for building Android apps?",
-      choices: ["Java", "Swift", "Python", "C++"],
-      correctAnswer: "A",
-    },
-
-    {
-      itemNumber: 2,
-      question: "What does HTML stand for?",
-      choices: [
-        "Hyper Text Markup Language",
-        "High Technical Markup Language",
-        "Hyperlinks and Text Markup Language",
-        "Home Tool Markup Language",
-      ],
-      correctAnswer: "A",
-    },
-
-    {
-      itemNumber: 3,
-      question:
-        "Which protocol is used for secure data transmission over the internet?",
-      choices: ["FTP", "HTTP", "SSH", "Telnet"],
-      correctAnswer: "C",
-    },
-
-    {
-      itemNumber: 4,
-      question: "What does CPU stand for?",
-      choices: [
-        "Computer Processing Unit",
-        "Central Processing Unit",
-        "Core Processing Unit",
-        "Control Processing Unit",
-      ],
-      correctAnswer: "B",
-    },
-
-    {
-      itemNumber: 5,
-      question:
-        "Which of the following is a relational database management system?",
-      choices: ["MongoDB", "MySQL", "Redis", "Cassandra"],
-      correctAnswer: "B",
-    },
-  ];
-  const myAnswers = ["A", "X", "C", "A", "D"];
+  
 
   const summaryRemarks = (correctAnswer, myAnswer) => {
     if (myAnswer === correctAnswer) {
@@ -84,7 +36,7 @@ const SummaryCard = (props) => {
         ()}>X</button>
       </div>
       <ul className="summary-body">
-        {quesTions.map((q, idx) => {
+        {Questions.map((q, idx) => {
           return (
             <li className="summary-content" key={idx}>
               <div className="summary-question">
@@ -95,18 +47,18 @@ const SummaryCard = (props) => {
               <div className="summary-choices">
                 {q.choices.map((c, idx2) => {
                   return (
-                    <span className={`answer-choices-span ${myAnswers[idx] === numToChar(idx2) ? "myAnswer": null}`} key={idx2}>
+                    <span className={`answer-choices-span ${answers[idx] === numToChar(idx2) ? "myAnswer": null}`} key={idx2}>
                       {numToChar(idx2)}.{c}
                     </span>
                   );
                 })}
               </div>
               <div className="summary-remarks">
-               <div className={`summary-remarks-wrapper ${summaryRemarks(q.correctAnswer, myAnswers[idx])}`}>
-               {summaryRemarksIcon(q.correctAnswer, myAnswers[idx])}
+               <div className={`summary-remarks-wrapper ${summaryRemarks(q.correctAnswer, answers[idx])}`}>
+               {summaryRemarksIcon(q.correctAnswer, answers[idx])}
                 <p className="summary-correct-answer">
                   <span>
-                    {`${summaryRemarks(q.correctAnswer, myAnswers[idx])}`}:
+                    {`${summaryRemarks(q.correctAnswer, answers[idx])}`}:
                   </span>
                   The correct answer is letter {q.correctAnswer}
                 </p>

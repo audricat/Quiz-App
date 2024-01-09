@@ -22,7 +22,7 @@
   --grey-shade-1: #D9D9D9;
   --grey-shade-2: #A7A7A7;
 
-  --green-shade-1: #adff2f;
+  --green-shade-1: #51FF13;
    
   --yellow-shade-1: #ffff00;
 
@@ -426,6 +426,10 @@ main {
   grid-template-rows: 40px 15px repeat(2, 1fr) 2fr;
   gap: 10px;
 }
+.quiz-card-header{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+}
 #item-count-wrapper {
   width: 100%;
   max-width: 1024px;
@@ -434,6 +438,7 @@ main {
   flex-direction: column;
   row-gap: 5px;
   column-gap: 10px;
+  border: 1px red solid
 }
 
 #item-count-wrapper span {
@@ -456,6 +461,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 
 #questions-wrapper {
@@ -464,16 +470,40 @@ main {
   border-radius: 10px;
   background: var(--white-shade-2);
 
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 40px 1fr;
+  justify-items: center;
+  gap:0;
+}
+.flag-wrapper{
+  height: 40px;
+  width: 97%;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+.flag-button{
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.question-text-wrapper{
+  height: 100%;
+  width: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
+ 
 }
-
 #question-text {
   font-size: 12px;
   text-align: center;
   line-height: 130%;
   width: 90%;
+  
+ 
+  
 }
 
 #answer-choices-wrapper {
@@ -604,10 +634,10 @@ main {
   grid-template-columns: 1fr;
   grid-template-rows: repeat(4, 1fr);
   gap: 10px;
-
+  
  
 }
-
+.score-card-wrapper 
 #overall-score-wrapper,
 #overall-score-wrapper li,
 #score-title,
@@ -675,12 +705,14 @@ main {
 
 #score-navigation {
   display: flex;
+  align-items: center;
   justify-content: center;
+  flex-direction: column;
+  padding: 10px;
 }
 
 #score-submit-button {
   margin-top: 10px;
-  align-self: flex-start;
 }
 
 .summary-card {
@@ -691,7 +723,7 @@ main {
   bottom:0;
   left:0;
   right:0;
-  overflow: auto;
+ 
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 60px 1fr;
@@ -703,18 +735,23 @@ main {
 }
 .summary-card > *{
   font-size: 12px;
+  color: var(--black-shade-1);
 }
 .summary-head {
   grid-area: Shead;
-
+  position: sticky;
+  align-self: self-start;
+  top:0;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: right;
+ 
 }
 
 .summary-body {
   grid-area: Sbody;
-
+  top: 60px;
   padding: 0;
   margin: 0;
   list-style: none;
@@ -724,6 +761,7 @@ main {
 
   gap: 10px;
   margin-bottom: 10px;
+  overflow: auto;
 }
 
 .close-button {
@@ -826,6 +864,104 @@ main {
 .Skipped{
   background: var(--yellow-shade-1);
 }
+
+.medium-button {
+  font-family: 'Press Start 2P', sans-serif;
+  background: var(--grey-shade-1);
+  border-radius: 12px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+}
+.medium-span {
+  display: block;
+  padding: 12px 42px;
+  border-radius: 12px;
+  font-size: 12px;
+  background: var(--white-shade-1);
+  color: var(--black-shade-1);
+  transform: translateY(-6px);
+}
+
+.medium-button:active .medium-span {
+  transform: translateY(-2px);
+}
+
+
+
+.question-navigator{
+  border: 1px red solid;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--black-shade-2);
+}
+
+.question-navigator-wrapper{
+  border: 1px red solid;
+  padding:0;
+  margin:0;
+  list-style: none;
+  height: 100%;
+  width:90%;
+  max-width: 1024px;
+ 
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3,1fr);
+  gap: 10px;
+}
+.number-grid{
+  padding: 10px;
+  margin: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5,1fr);
+  justify-items: center;
+  gap: 5px;
+
+  background: var(--white-shade-2);
+
+  border-radius: 10px;
+}
+
+.number-grid-button{
+  width: 40px;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  border: 1px var(--grey-shade-1) solid;
+}
+.number-grid-button:hover{
+  border: 1px var(--black-shade-1) solid;
+}
+
+
+
+
+#Answered{
+  background: var(--green-shade-1);
+}
+#Skipped{
+  background: var(--yellow-shade-1);
+}
+#Flagged{
+  background: var(--red-shade-3);
+}
+#Default{
+  background: var(--white-shade-1);
+}
+
+
+
 @media screen and (min-width: 640px) {
 
 
@@ -888,7 +1024,9 @@ main {
   .global-button-span,
   .quiz-button,
   .quiz-span,
-  .score-card-wrapper {
+  .score-card-wrapper,
+  .medium-span
+  {
     font-size: 14px;
   }
 
@@ -935,7 +1073,9 @@ main {
   .global-button-span,
   #question-text,
   .quiz-span,
-  .score-card-wrapper {
+  .score-card-wrapper,
+  .medium-span
+  {
     font-size: 16px;
   }
   .quiz-span{
@@ -964,7 +1104,9 @@ main {
   .global-button-span,
   #question-text,
   .quiz-span,
-  .score-card-wrapper {
+  .score-card-wrapper,
+  .medium-span
+  {
     font-size: 20px;
   }
 

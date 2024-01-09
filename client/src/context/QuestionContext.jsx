@@ -27,6 +27,7 @@ export function QuestionProvider({ children }) {
       setAnswers(currentAnswers);
     }
   }, [setAnswers]);
+  
 
   const progress = () => {
     return (itemNumber * 100) / itemCount;
@@ -39,15 +40,28 @@ export function QuestionProvider({ children }) {
 
   const handleNext = () => {
     if (page !== itemCount - 1) {
-      setPage((page) => page + 1);
+      if(answers[itemNumber -1] === null){
+        handleAnswers("X")
+      }
+       setPage((page) => page + 1);
+     
     }
   };
 
   const handlePrevious = () => {
     if (page > 0) {
+   
+      if(answers[itemNumber -1] === null){
+        console.log("PREV")
+        handleAnswers("X")
+      }
       setPage((page) => page - 1);
     }
   };
+  
+  const handleJump = (jumpToPage)=>{
+    setPage(jumpToPage);
+  }
 
   const handleAnswers = (choice) => {
     const oldAnswers = [...answers];
@@ -66,7 +80,6 @@ export function QuestionProvider({ children }) {
       text: "Once submitted, you cannot make any changes.",
       showCancelButton: true,
       cancelButtonText: "CANCEL",
-
       confirmButtonText: "SUBMIT",
       reverseButtons: true,
       allowOutsideClick: false,
@@ -80,6 +93,7 @@ export function QuestionProvider({ children }) {
   return (
     <QuestionContext.Provider
       value={{
+        answers,
         itemNumber,
         itemCount,
         question,
@@ -90,6 +104,7 @@ export function QuestionProvider({ children }) {
         handlePrevious,
         submitResponse,
         handleNext,
+        handleJump,
         progress
       }}
     >
