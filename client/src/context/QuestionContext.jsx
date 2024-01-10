@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { Questions } from "../database/Questions";
 import { useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 import Swal from "sweetalert2";
 
 const QuestionContext = createContext({});
@@ -27,7 +27,6 @@ export function QuestionProvider({ children }) {
       setAnswers(currentAnswers);
     }
   }, [setAnswers]);
-  
 
   const progress = () => {
     return (itemNumber * 100) / itemCount;
@@ -38,30 +37,29 @@ export function QuestionProvider({ children }) {
     return num <= char.length ? char[num] : null;
   };
 
+  const isAnswerNull = () => {
+    if (answers[itemNumber - 1] === null) {
+      handleAnswers("X");
+    }
+  };
+
   const handleNext = () => {
     if (page !== itemCount - 1) {
-      if(answers[itemNumber -1] === null){
-        handleAnswers("X")
-      }
-       setPage((page) => page + 1);
-     
+      isAnswerNull();
+      setPage((page) => page + 1);
     }
   };
 
   const handlePrevious = () => {
     if (page > 0) {
-   
-      if(answers[itemNumber -1] === null){
-        console.log("PREV")
-        handleAnswers("X")
-      }
+      isAnswerNull();
       setPage((page) => page - 1);
     }
   };
-  
-  const handleJump = (jumpToPage)=>{
+
+  const handleJump = (jumpToPage) => {
     setPage(jumpToPage);
-  }
+  };
 
   const handleAnswers = (choice) => {
     const oldAnswers = [...answers];
@@ -105,7 +103,7 @@ export function QuestionProvider({ children }) {
         submitResponse,
         handleNext,
         handleJump,
-        progress
+        progress,
       }}
     >
       {children}
@@ -117,5 +115,5 @@ export function QuestionProvider({ children }) {
 export default QuestionContext;
 
 QuestionProvider.propTypes = {
-    children: PropTypes.node,
-}
+  children: PropTypes.node,
+};
