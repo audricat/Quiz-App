@@ -46,8 +46,12 @@ const QuizPage = () => {
 
 
 
-  const handleInstructions = () => {
+  const hideInstruction = () => {
     setInstructions(true);
+  };
+
+  const showInstruction = () => {
+    setInstructions(false);
   };
 
 
@@ -55,7 +59,7 @@ const QuizPage = () => {
 
   return (
     <div className="quiz-page-container">
-      {instructions ? <QuizCard /> : <InstructionsCard handleInstructions={handleInstructions}/>}
+      {instructions ? <QuizCard  showInstruction={showInstruction}/> : <InstructionsCard hideInstruction={hideInstruction}/>}
     </div>
   );
 };

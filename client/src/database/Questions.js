@@ -10,7 +10,9 @@ export const Questions = [
             "Python",
             "C++"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "Java: Java is a versatile and widely used programming language that is the primary language for Android app development. It is known for its portability and platform independence.",
+        source: "https://www.w3schools.com/java/"
     },
 
 
@@ -23,7 +25,9 @@ export const Questions = [
             "Hyperlinks and Text Markup Language",
             "Home Tool Markup Language"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "HTML (Hypertext Markup Language): HTML is the standard markup language for creating and structuring web documents. It uses tags to define elements like headings, paragraphs, and links.",
+        source: "https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/HTML_basics"
     },
 
     {
@@ -35,7 +39,9 @@ export const Questions = [
             "SSH",
             "Telnet"
         ],
-        correctAnswer: "C"
+        correctAnswer: "C",
+        explanation: "SSH (Secure Shell): SSH is a protocol used for secure data transmission over a network, commonly the internet. It provides a secure way to access and manage remote systems.",
+        source: "https://www.digitalocean.com/community/tutorials/how-to-use-ssh-to-connect-to-a-remote-server"
     },
 
     {
@@ -47,7 +53,9 @@ export const Questions = [
             "Core Processing Unit",
             "Control Processing Unit"
         ],
-        correctAnswer: "B"
+        correctAnswer: "B",
+        explanation: "CPU (Central Processing Unit): The CPU is the primary component of a computer responsible for executing instructions and performing calculations. It is often referred to as the brain of the computer.",
+        source: "https://www.lifewire.com/what-is-a-cpu-2618150"
     },
 
     {
@@ -59,7 +67,9 @@ export const Questions = [
             "Redis",
             "Cassandra"
         ],
-        correctAnswer: "B"
+        correctAnswer: "B",
+        explanation: "MySQL: MySQL is a relational database management system (RDBMS) used for storing and managing structured data. It is widely used in web development.",
+        source: "https://dev.mysql.com/doc/"
     },
 
     {
@@ -71,7 +81,9 @@ export const Questions = [
             "Mozilla",
             "Netscape"
         ],
-        correctAnswer: "D"
+        correctAnswer: "D",
+        explanation: "Netscape: Netscape developed the JavaScript programming language. JavaScript is a versatile scripting language widely used for web development.",
+        source: "https://developer.mozilla.org/en-US/docs/Web/javascript"
     },
 
     {
@@ -83,7 +95,9 @@ export const Questions = [
             "Virtual Proxy Network",
             "Visual Private Network"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "VPN (Virtual Private Network): A VPN is a technology that creates a secure and encrypted connection over a less secure network, such as the internet. It ensures privacy and security for data transmission.",
+        source: "https://simple.wikipedia.org/wiki/Virtual_private_network#:~:text=A%20virtual%20private%20network%2C%20or%20VPN%20is%20a,see%20the%20packets%20of%20data%20which%20it%20routes"
     },
 
     {
@@ -95,19 +109,23 @@ export const Questions = [
             "SHA",
             "AES"
         ],
-        correctAnswer: "D"
+        correctAnswer: "D",
+        explanation: "AES (Advanced Encryption Standard): AES is a widely used encryption algorithm for secure communication on the internet. It provides strong encryption for protecting data.",
+        source: "https://www.simplilearn.com/tutorials/cryptography-tutorial/aes-encryption"
     },
 
     {
         itemNumber: 9,
-        question: "What punctuation mark is typically used to end a line of code in many programming languages?",
+        question: "What does URL stands for?",
         choices: [
             "Uniform Resource Locator",
             "Universal Remote Link",
             "Unified Resource Locator",
             "Uniform Remote Link"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "URL: A URL or web address, is a way to find and access information on the internet. It's like a home address for websites, documents, or files, telling your web browser where to go to get the content you want.",
+        source: "https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_is_a_URL"
     },
 
     {
@@ -119,7 +137,9 @@ export const Questions = [
             "Ruby",
             "Swift"
         ],
-        correctAnswer: "B"
+        correctAnswer: "B",
+        explanation: "R: R is a programming language known for its use in data analysis and machine learning. It has a rich ecosystem of packages for statistical computing.",
+        source: "https://www.datacamp.com/tracks/r-programming"
     },
 
     {
@@ -131,7 +151,9 @@ export const Questions = [
             "Local Area Network",
             "Large Access Network"
         ],
-        correctAnswer: "C"
+        correctAnswer: "C",
+        explanation: "LAN (Local Area Network): LAN is a network that connects computers and devices within a limited geographic area, such as a home, office, or campus.",
+        source: "https://www.cisco.com/c/en/us/products/switches/what-is-a-lan-local-area-network.html"
     },
 
     {
@@ -143,7 +165,9 @@ export const Questions = [
             "DHCP",
             "SNMP"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "SMTP (Simple Mail Transfer Protocol): SMTP is the protocol used for sending emails. It defines how emails are sent and received over the internet.",
+        source: "https://www.bing.com/search?q=SMTP+Protocol+on+Mozilla+Developer+Network+(MDN)&cvid=6c1bc91d8a604852aa619d5297ce0c4f&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBBzY2OWowajmoAgCwAgA&FORM=ANAB01&PC=U531"
     },
 
     {
@@ -155,7 +179,9 @@ export const Questions = [
             "Computer Style Sheets",
             "Colorful Style Sheets"
         ],
-        correctAnswer: "B"
+        correctAnswer: "B",
+        explanation: "CSS (Cascading Style Sheets): CSS is a stylesheet language used for describing the presentation of a document written in HTML. It defines the layout and appearance of web pages.",
+        source: "https://developer.mozilla.org/en-US/docs/Web/CSS/Tutorials"
     },
 
     {
@@ -167,7 +193,9 @@ export const Questions = [
             "Objective-C",
             "C#"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "Swift: Swift is a programming language developed by Apple for iOS, macOS, watchOS, and tvOS app development. It is known for its speed and safety features.",
+        source: "https://www.swift.org/documentation/"
     },
 
     {
@@ -179,7 +207,9 @@ export const Questions = [
             "Automated Programming Interface",
             "Application Protocol Interface"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "API (Application Programming Interface): An API is a set of rules and tools for building software applications. It defines how software components should interact.",
+        source: "https://money.howstuffworks.com/business-communications/how-to-leverage-an-api-for-conferencing1.htm"
     },
 
     {
@@ -191,7 +221,9 @@ export const Questions = [
             "macOS",
             "Android"
         ],
-        correctAnswer: "C"
+        correctAnswer: "C",
+        explanation: "macOS: macOS is the operating system developed by Apple Inc. for their Macintosh computers.",
+        source: "https://en.wikipedia.org/wiki/MacOS"
     },
 
     {
@@ -203,7 +235,9 @@ export const Questions = [
             "Digital Naming System",
             "Distributed Naming Service"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "DNS (Domain Name System): DNS is a system that translates human-readable domain names into IP addresses, facilitating internet navigation.",
+        source: "https://www.cloudflare.com/application-services/products/dns/"
     },
 
     {
@@ -215,7 +249,9 @@ export const Questions = [
             "Edge",
             "Chrome"
         ],
-        correctAnswer: "D"
+        correctAnswer: "D",
+        explanation: "Chrome: Chrome is a web browser developed by Google. It is known for its speed, simplicity, and integration with Google services.",
+        source: "https://www.lifewire.com/what-is-google-chrome-4687647"
     },
 
 
@@ -229,7 +265,9 @@ export const Questions = [
             "Jumbled Photographic Encoding Group",
             "JavaScript Programming Enhancement Group"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "JPEG (Joint Photographic Experts Group): JPEG is a standard for compressing and encoding digital images. It is widely used for storing and transmitting photographs on the internet.",
+        source: "https://simple.wikipedia.org/wiki/JPEG#:~:text=JPEG%20-%20Simple%20English%20Wikipedia%2C%20the%20free%20encyclopedia,can%20be%20changed%20depending%20on%20the%20wanted%20quality"
     },
 
     {
@@ -241,7 +279,9 @@ export const Questions = [
             "Julia",
             "R"
         ],
-        correctAnswer: "D"
+        correctAnswer: "D",
+        explanation: "R: R is a programming language primarily used for statistical computing and graphics. It is widely used in academia and data analysis.",
+        source: "https://www.r-project.org/"
     },
 
 
@@ -254,7 +294,9 @@ export const Questions = [
             "Structured Question Language",
             "Systematic Query Language"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "SQL (Structured Query Language): SQL is a domain-specific language used for managing and manipulating relational databases.",
+        source: "https://www.w3schools.com/sql/"
     },
 
 
@@ -267,7 +309,9 @@ export const Questions = [
             "Snapchat",
             "Instagram"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "Dropbox: Dropbox is an example of a cloud storage service that allows users to store and share files online.",
+        source: "https://www.cloudwards.net/how-to-use-dropbox/"
     },
 
     {
@@ -279,7 +323,9 @@ export const Questions = [
             "Hypertext Transport Protocol Secure",
             "Hypertext Terminal Protocol Secure"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "HTTPS (Hypertext Transfer Protocol Secure): HTTPS is a secure version of HTTP, providing encrypted communication over a computer network, typically the internet.",
+        source: "https://developer.mozilla.org/en-US/docs/Glossary/https"
     },
 
     {
@@ -291,7 +337,9 @@ export const Questions = [
             "IBM",
             "Intel"
         ],
-        correctAnswer: "B"
+        correctAnswer: "B",
+        explanation: "Microsoft: Microsoft is the company that developed the Windows operating system.",
+        source: "https://www.microsoft.com/en-us/windows?r=1"
     },
 
     {
@@ -303,7 +351,9 @@ export const Questions = [
             "Extended Markup Language",
             "External Markup Language"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "XML (Extensible Markup Language): XML is a markup language used for encoding documents in a format that is both human-readable and machine-readable.",
+        source: "https://www.w3schools.com/xml/"
     },
 
     {
@@ -315,7 +365,9 @@ export const Questions = [
             "Mercurial",
             "All of the above"
         ],
-        correctAnswer: "D"
+        correctAnswer: "D",
+        explanation: "Git: Git is a widely used version control system for tracking changes in source code during software development. It enables collaboration among multiple developers.",
+        source: "https://git-scm.com/doc"
     },
 
     {
@@ -327,7 +379,9 @@ export const Questions = [
             "Internet of Technology",
             "Internet of Thoughts"
         ],
-        correctAnswer: "B"
+        correctAnswer: "B",
+        explanation: "IoT (Internet of Things): IoT refers to the network of interconnected physical devices that communicate and exchange data over the internet.",
+        source: "https://www.ibm.com/cloud/internet-of-things"
     },
 
     {
@@ -339,7 +393,9 @@ export const Questions = [
             "JavaScript",
             "Ruby"
         ],
-        correctAnswer: "C"
+        correctAnswer: "C",
+        explanation: "JavaScript: JavaScript is a programming language commonly used for building web applications on the client-side. It adds interactivity to web pages.",
+        source: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide"
     },
 
     {
@@ -351,7 +407,9 @@ export const Questions = [
             "File Transmission Protocol",
             "Internet of Thoughts"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "FTP (File Transfer Protocol): FTP is a standard network protocol used for transferring files from one host to another over a TCP-based network.",
+        source: "https://developer.mozilla.org/en-US/docs/Glossary/FTP"
     },
 
     {
@@ -363,7 +421,9 @@ export const Questions = [
             "Linux",
             "Android"
         ],
-        correctAnswer: "C"
+        correctAnswer: "C",
+        explanation: "Linux: Linux is a popular open-source operating system kernel used in a variety of computing devices, including servers, desktops, and embedded systems.",
+        source: "https://linux.org/"
     },
 
     {
@@ -375,7 +435,9 @@ export const Questions = [
             "YAML",
             "CSV"
         ],
-        correctAnswer: "B"
+        correctAnswer: "B",
+        explanation: "XML (Extensible Markup Language): XML is a markup language used for creating web pages. It is often used to structure data in a readable format.",
+        source: "https://www.w3schools.com/xml/"
     },
 
     {
@@ -387,7 +449,9 @@ export const Questions = [
             "Semicolon (;)",
             "Colon (:)"
         ],
-        correctAnswer: "C"
+        correctAnswer: "C",
+        explanation: "Semicolon (;): A semicolon is typically used to end a line of code in many programming languages, indicating the termination of a statement.",
+        source: "https://www.geeksforgeeks.org/role-of-semicolon-in-various-programming-languages/"
     },
 
     {
@@ -399,7 +463,9 @@ export const Questions = [
             "C++",
             "Ruby"
         ],
-        correctAnswer: "B"
+        correctAnswer: "B",
+        explanation: "Python: Python is a programming language often used for developing artificial intelligence applications due to its simplicity and extensive libraries.",
+        source: "https://www.python.org/"
     },
 
     {
@@ -411,7 +477,9 @@ export const Questions = [
             "System Socket Layer",
             "Safe Socket Layer"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "SSL (Secure Socket Layer): SSL is a security protocol that ensures secure and encrypted communication over the internet.",
+        source: "https://shop.globalsign.com/en/ssl"
     },
 
 
@@ -424,7 +492,9 @@ export const Questions = [
             "MongoDB",
             "Oracle"
         ],
-        correctAnswer: "C"
+        correctAnswer: "C",
+        explanation: "MongoDB: MongoDB is a NoSQL database that stores data in a flexible, JSON-like format. It is known for its scalability and flexibility.",
+        source: "https://www.bing.com/search?q=MongoDB+Documentation&cvid=2556b91e16ce4118876d173d7dcd6c18&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQABhAMgYIAhAAGEAyBggDEAAYQDIGCAQQABhAMgYIBRAAGEAyBggGEAAYQDIGCAcQABhAMgYICBAAGEDSAQc3MzJqMGo5qAIAsAIA&FORM=ANAB01&PC=U531"
     },
 
     {
@@ -436,7 +506,9 @@ export const Questions = [
             "Distributed Host Configuration Protocol",
             "Dynamic Host Control Protocol"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "DHCP (Dynamic Host Configuration Protocol): DHCP is a network protocol used to automatically assign IP addresses and other network configuration information to devices on a network.",
+        source: "https://www.ciscozine.com/how-a-dhcp-server-works-and-how-to-configure-it-on-a-cisco-router/"
     },
 
     {
@@ -448,7 +520,9 @@ export const Questions = [
             "Ruby",
             "PHP"
         ],
-        correctAnswer: "B"
+        correctAnswer: "B",
+        explanation: "Python: Python is commonly used for data analysis and scientific computing due to its simplicity and extensive libraries.",
+        source: "https://jakevdp.github.io/PythonDataScienceHandbook/"
     },
 
     {
@@ -460,7 +534,9 @@ export const Questions = [
             "World Area Network",
             "Wired Area Network"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "WAN (Wide Area Network): WAN is a network that covers a broad area, connecting computers and networks over long distances.",
+        source: "https://www.cisco.com/c/en/us/products/switches/what-is-a-wan-wide-area-network.html"
     },
 
     {
@@ -472,7 +548,9 @@ export const Questions = [
             "Jenkins",
             "Docker"
         ],
-        correctAnswer: "B"
+        correctAnswer: "B",
+        explanation: "Git: Git is a version control system used for tracking changes in source code and facilitating collaboration in software development.",
+        source: "https://git-scm.com/doc"
     },
 
     {
@@ -484,7 +562,9 @@ export const Questions = [
             "JavaScript Oriented Notation",
             "Java Serialized Object Notation"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "JSON (JavaScript Object Notation): JSON is a lightweight data-interchange format that is easy for humans to read and write and easy for machines to parse and generate.",
+        source: "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON"
     },
 
     {
@@ -496,7 +576,9 @@ export const Questions = [
             "Express",
             "Flask"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "React: React is an example of a front-end web development framework. It is a JavaScript library for building user interfaces.",
+        source: "https://react.dev/"
     },
 
     {
@@ -508,7 +590,9 @@ export const Questions = [
             "Rapid Access of Independent Drives",
             "Redundant Access to Integrated Disks"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "RAID (Redundant Array of Independent Disks): RAID is a storage technology that uses multiple disk drives to improve performance, reliability, or a combination of both.",
+        source: "https://www.bing.com/search?q=RAID+on+TechTarget&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARAAGEDSAQgxODI2ajBqOagCALACAA&FORM=ANAB01&PC=U531"
     },
 
     {
@@ -520,7 +604,9 @@ export const Questions = [
             "Java",
             "Ruby"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "C#: C# (pronounced C sharp) is a programming language used for game development in Unity, a popular game development engine.",
+        source: "https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/"
     },
 
 
@@ -533,7 +619,9 @@ export const Questions = [
             "Java Virtual Memory",
             "JavaScript Virtual Memory"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "JVM (Java Virtual Machine): JVM is a virtual machine that enables a computer to run Java programs and provides a platform-independent execution environment.",
+        source: "https://docs.oracle.com/en/database/oracle/oracle-database/19/jjdev/Oracle-JVM-overview.html#GUID-391B265A-D656-4589-A4F5-C4F801340886"
     },
 
     {
@@ -545,7 +633,9 @@ export const Questions = [
             "NFC",
             "RFID"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "Bluetooth: Bluetooth is a technology used for connecting devices using short-range wireless communication.",
+        source: "https://www.bing.com/search?q=Bluetooth+Technology+on+Bluetooth+SIG&cvid=5367278e1e13440e811dd6f24297d61e&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQABhAMgYIAhAAGEAyBggDEAAYQDIGCAQQABhAMgYIBRAAGEAyBggGEAAYQDIGCAcQABhAMgYICBAAGEDSAQc2MzdqMGo5qAIAsAIA&FORM=ANAB01&PC=U531"
     },
 
     {
@@ -557,7 +647,9 @@ export const Questions = [
             "Complete Style Sheets 3",
             "Computer Style Sheets Level 3"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "CSS3 (Cascading Style Sheets Level 3): CSS3 is the latest evolution of the Cascading Style Sheets language and adds new features to enhance web page styling.",
+        source: "https://developer.mozilla.org/en-US/docs/Web/CSS"
     },
 
     {
@@ -569,7 +661,9 @@ export const Questions = [
             "Vagrant",
             "Ansible"
         ],
-        correctAnswer: "B"
+        correctAnswer: "B",
+        explanation: "Docker: Docker is a widely used containerization platform that allows developers to package and distribute applications with their dependencies. ",
+        source: "https://docs.docker.com/get-started/overview/"
     },
 
 
@@ -582,7 +676,9 @@ export const Questions = [
             "Transmitting Control Process/Internet Process",
             "Transfer Control Protocol/Internet Protocol"
         ],
-        correctAnswer: "A"
+        correctAnswer: "A",
+        explanation: "TCP/IP (Transmission Control Protocol/Internet Protocol): TCP/IP is the suite of protocols used for transmitting data over the internet.",
+        source: "https://www.cisco.com/c/en/us/support/docs/ip/routing-information-protocol-rip/13769-5.html"
     },
 
     {
@@ -594,7 +690,9 @@ export const Questions = [
             "AWS (Amazon Web Services)",
             "IBM Cloud"
         ],
-        correctAnswer: "C"
+        correctAnswer: "C",
+        explanation: "AWS (Amazon Web Services): AWS is a cloud computing service provided by Amazon, offering a wide range of infrastructure and application services.",
+        source: "https://aws.amazon.com/free/?trk=a1f96d77-24e3-497e-b5fc-bab658afe631&sc_channel=ps&s_kwcid=AL!4422!10!71949520120082!71950042962971&ef_id=d344a8531e36151a6742cde14128b290:G:s&all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all"
     },
 
     {
@@ -606,7 +704,9 @@ export const Questions = [
             "Object Representation Model",
             "Object Rendering Model"
         ],
-        correctAnswer:"A"
+        correctAnswer:"A",
+        explanation: "ORM (Object-Relational Mapping): ORM is a programming technique for converting data between incompatible type systems, typically between object-oriented programming languages and relational databases.",
+        source: "https://stackoverflow.com/questions/1152299/what-is-an-object-relational-mapping-framework"
     },
 
 ]

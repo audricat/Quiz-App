@@ -1,14 +1,14 @@
-import { Questions, CorrectAnswerList } from "../database/Questions";
+import { Questions } from "../database/Questions";
 import QuestionContext from "../context/QuestionContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import PropTypes from 'prop-types'
 import { GoXCircle, GoCheckCircle, GoSkip } from "react-icons/go";
 const SummaryCard = (props) => {
   const {closeSummary} = props;
   const {answers, numToChar } = useContext(QuestionContext);
-
+  const [toggleExplanation,setToggleExplanation] =useState(-1)
   
-
+  
   const summaryRemarks = (correctAnswer, myAnswer) => {
     if (myAnswer === correctAnswer) {
       return "Correct";
@@ -28,7 +28,16 @@ const SummaryCard = (props) => {
       return <GoSkip className="summary-remarks-icon Skipped" />;
     }
   };
-
+  
+  const openLink =(link)=>{
+    const newWindow = window.open(link, '_blank', 'noopener,noreferrer')
+    if (newWindow) newWindow.opener = null
+  }
+  
+  const handleExplanation = (idx)=>{
+     setToggleExplanation(idx)
+  }
+ 
   return (
     <div className="summary-card">
       <div className="summary-head">
@@ -55,14 +64,45 @@ const SummaryCard = (props) => {
               </div>
               <div className="summary-remarks">
                <div className={`summary-remarks-wrapper ${summaryRemarks(q.correctAnswer, answers[idx])}`}>
-               {summaryRemarksIcon(q.correctAnswer, answers[idx])}
-                <p className="summary-correct-answer">
+                <ul className="summary-remarks-grid">
+                  <li id="aaa">
+                  {summaryRemarksIcon(q.correctAnswer, answers[idx])}
+                  </li>
+                  <li id="bbb">
+                  <p className="summary-correct-answer">
                   <span>
                     {`${summaryRemarks(q.correctAnswer, answers[idx])}`}:
                   </span>
-                  The correct answer is letter {q.correctAnswer}
+                  The correct answer is letter {q.correctAnswer}. 
                 </p>
+                  </li>
+                  <li id="ccc" >
+                 { toggleExplanation === idx
+                 ? <button className="explanation-button" onClick={()=>handleExplanation(-1)}>Hide explanation</button>
+                 :  <button className="explanation-button" onClick={()=>handleExplanation(idx)}>Show explanation</button>
+                 }
+                  </li>
+                </ul>
+             
                </div>
+              { toggleExplanation === idx ?
+                <div className={`summary-explanation ${summaryRemarks(q.correctAnswer, answers[idx])}`}>
+               <ul className="summary-explanation-wrapper">
+                   <li>Explanation:</li>
+                   <li>
+                    <p>{q.explanation}
+                     </p>
+                   </li>
+                   <li className="summary-source-link">
+                    <button  className="explanation-button" onClick={()=> openLink(q.source) }>Learn more</button>
+                  
+                   </li>
+               </ul>
+             </div>
+               : <></>
+               
+
+              }
               </div>
             </li>
           );

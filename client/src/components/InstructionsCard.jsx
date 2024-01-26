@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 const InstructionsCard = (props) => {
-  const { handleInstructions } = props;
+  const { hideInstruction } = props;
 
   const instructions = [
     {
@@ -36,9 +36,13 @@ const InstructionsCard = (props) => {
       details:
         "Manage background music throughout the quiz, turn on and off as desired.",
     },
-    
+    {
+      id: 8,
+      details:
+        "Click the icon button next to the 'review' button to access the instruction page.",
+    },
   ];
-
+ 
   return (
    
       <ul className="instructions-card">
@@ -57,7 +61,7 @@ const InstructionsCard = (props) => {
           </ul>
         </li>
         <li id="instructions-navigation">
-          <button className="global-button" onClick={handleInstructions}>
+          <button className="global-button" onClick={hideInstruction}>
             <span className="global-button-span">OK</span>
           </button>
         </li>
@@ -69,5 +73,5 @@ const InstructionsCard = (props) => {
 export default InstructionsCard;
 
 InstructionsCard.propTypes = {
-  handleInstructions: PropTypes.func,
+  hideInstruction: PropTypes.func,
 };

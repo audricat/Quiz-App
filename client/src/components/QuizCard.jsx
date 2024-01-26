@@ -3,8 +3,10 @@ import QuestionContext from "../context/QuestionContext";
 import QuestionNavigator from "./QuestionNavigator";
 import Swal from "sweetalert2";
 import flag from "../assets/flag.png";
-
-const QuizCard = () => {
+import { BsInfoCircle } from "react-icons/bs";
+import PropTypes from 'prop-types'
+const QuizCard = (props) => {
+  const { showInstruction } = props;
   const {
     answers,
     itemNumber,
@@ -21,10 +23,6 @@ const QuizCard = () => {
   } = useContext(QuestionContext);
 
   const [toggleNavigator, setToggleNavigator] = useState(false);
-
-  useEffect(() => {
-    console.log(answers[itemNumber - 1]);
-  });
 
   const handleToggleNavigator = () => {
     setToggleNavigator(!toggleNavigator);
@@ -68,6 +66,10 @@ const QuizCard = () => {
           </span>
         </div>
         <div id="navigator-button-wrapper">
+     
+        <button className="medium-button" id="quiz-icon-button"onClick={handleToggleNavigator}>
+            <span className="medium-span" id="quiz-icon-span">   <BsInfoCircle className="quiz-icon" onClick={showInstruction}/></span>
+          </button>
           <button className="medium-button" onClick={handleToggleNavigator}>
             <span className="medium-span">Review</span>
           </button>
@@ -153,3 +155,6 @@ const QuizCard = () => {
 };
 
 export default QuizCard;
+QuizCard.propTypes = {
+  showInstruction: PropTypes.func,
+};

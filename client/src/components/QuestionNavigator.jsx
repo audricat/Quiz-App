@@ -21,47 +21,6 @@ const QuestionNavigator = (props) => {
     handleToggleNavigator();
   };
   return (
-    // <div className="question-navigator">
-    //   <ul className="question-navigator-wrapper">
-    //     <li className="navigator-header">
-    //       <div className="navigation-legend-wrapper">
-    //         <span>Question Navigator</span>
-    //         <span>Legend:</span>
-    //         <div className="navigation-legend">
-    //           <button>
-    //             <span>Answered</span>
-    //           </button>
-    //           <button>
-    //             <span>Skipped</span>
-    //           </button>
-    //         </div>
-    //       </div>
-    //     </li>
-    //     <li className="navigator-center">
-    //       <ul className="number-grid">
-    //         {answers.map((answer, idx) => {
-    //           return (
-    //             <li key={idx} className="number-grid-wrapper">
-    //               <button
-    //                 className="number-grid-button"
-    //                  id={`${questionStatus(answer)}`}
-    //                 onClick={()=>handleJumpToPage(idx)}
-    //               >
-    //                 {idx + 1}
-    //               </button>
-    //             </li>
-    //           );
-    //         })}
-    //       </ul>
-    //     </li>
-    //     <li className="navigator-footer">
-    //       <button onClick={handleToggleNavigator} className="medium-button">
-    //         <span className="medium-span">BACK</span>
-    //       </button>
-    //     </li>
-    //   </ul>
-    // </div>
-
     <div className="question-navigator">
       <ul className="question-navigator-wrapper">
         <li className="navigator-header">
